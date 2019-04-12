@@ -14,21 +14,20 @@
 
 char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
-	size_t i;
+	size_t		len;
+	size_t		i;
 
 	i = 0;
-	while (src[i] != '\0' && i < n && dest[i] != '\0')
+	if (!dest || !src)
+		return (NULL);
+	len = ft_strlen((char*)src);
+	while (i < n)
 	{
-		dest[i] = src[i];
-		i++;
-	}
-	if (i < n && src[i] == '\0' && dest[i] != '\0')
-	{
-		while (i < n)
-		{
+		if (i > len)
 			dest[i] = '\0';
-			++i;
-		}
+		else
+			dest[i] = src[i];
+		i++;
 	}
 	return (dest);
 }
